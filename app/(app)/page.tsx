@@ -6,7 +6,7 @@ const MODULES = [
   { href: '/products', icon: '🧴', title: 'Products & Actives', desc: 'Your shelf, by active ingredient', ready: true },
   { href: '/interventions', icon: '🗓️', title: 'Interventions', desc: 'What you applied, and when', ready: true },
   { href: '/routines', icon: '🔁', title: 'Routines', desc: 'Steps & adherence tracking', ready: true },
-  { href: '/cycle', icon: '🌙', title: 'Cycle', desc: 'Period & hormonal markers', ready: false },
+  { href: '/cycle', icon: '🌙', title: 'Cycle', desc: 'Period & hormonal markers', ready: true },
   { href: '/blood', icon: '🩸', title: 'Blood Panels', desc: 'Ferritin, thyroid, hormones…', ready: false },
   { href: '/photos', icon: '📸', title: 'Photos', desc: 'Constant-condition tracking', ready: false },
   { href: '/nutrition', icon: '🥗', title: 'Nutrition', desc: 'Key hair nutrients (from MFP)', ready: false },
