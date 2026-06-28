@@ -18,7 +18,7 @@ const NAV = [
   { href: '/biometrics', label: 'Biometrics', ready: true },
   { href: '/events', label: 'Events', ready: true },
   { href: '/shedding', label: 'Shedding', ready: true },
-  { href: '/library', label: 'Library', ready: false },
+  { href: '/library', label: 'Library', ready: true },
   { href: '/lab', label: 'AL Analyst', ready: true },
 ];
 
