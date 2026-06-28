@@ -7,7 +7,7 @@ const MODULES = [
   { href: '/interventions', icon: '🗓️', title: 'Interventions', desc: 'What you applied, and when', ready: true },
   { href: '/routines', icon: '🔁', title: 'Routines', desc: 'Steps & adherence tracking', ready: true },
   { href: '/cycle', icon: '🌙', title: 'Cycle', desc: 'Period & hormonal markers', ready: true },
-  { href: '/blood', icon: '🩸', title: 'Blood Panels', desc: 'Ferritin, thyroid, hormones…', ready: false },
+  { href: '/blood', icon: '🩸', title: 'Blood Panels', desc: 'Ferritin, thyroid, hormones…', ready: true },
   { href: '/photos', icon: '📸', title: 'Photos', desc: 'Constant-condition tracking', ready: false },
   { href: '/nutrition', icon: '🥗', title: 'Nutrition', desc: 'Key hair nutrients (from MFP)', ready: false },
   { href: '/biometrics', icon: '⌚', title: 'Biometrics', desc: 'Sleep, stress, HR', ready: false },
