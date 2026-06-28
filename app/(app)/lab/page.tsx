@@ -46,7 +46,7 @@ export default function LabPage() {
   function downloadDossier() {
     const blob = new Blob([dossier], { type: 'text/markdown' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-    a.download = `brunair-dossier-${new Date().toISOString().slice(0, 10)}.md`; a.click(); URL.revokeObjectURL(a.href);
+    a.download = `brunhair-dossier-${new Date().toISOString().slice(0, 10)}.md`; a.click(); URL.revokeObjectURL(a.href);
   }
 
   async function saveConcl() {
