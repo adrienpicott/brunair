@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
 import DataCalendar, { ViewToggle } from '@/components/DataCalendar';
+import TrendChart from '@/components/TrendChart';
 
 const METHODS = [
   { key: '60s_count', label: '60-second count' },
@@ -67,6 +68,13 @@ export default function SheddingPage() {
         <div className="card" style={{ padding: 16, marginTop: 18, display: 'flex', gap: 28, flexWrap: 'wrap', background: '#fbfaff', borderColor: '#e7e0ff' }}>
           <div><div style={{ fontSize: 11.5, color: '#a59fae', fontWeight: 600, textTransform: 'uppercase' }}>Latest</div><div style={{ fontSize: 20, fontWeight: 700, color: '#1a1625', marginTop: 2 }}>{stats.latest}</div></div>
           {stats.avg != null && <div><div style={{ fontSize: 11.5, color: '#a59fae', fontWeight: 600, textTransform: 'uppercase' }}>Avg (last {stats.n})</div><div style={{ fontSize: 20, fontWeight: 700, color: '#7c5cff', marginTop: 2 }}>{stats.avg}</div></div>}
+        </div>
+      )}
+
+      {rows.length >= 2 && (
+        <div className="card" style={{ padding: 16, marginTop: 14 }}>
+          <div style={{ fontSize: 12.5, fontWeight: 600, color: '#a59fae', textTransform: 'uppercase', letterSpacing: 0.3, marginBottom: 10 }}>Trend — all counts</div>
+          <TrendChart points={[...rows].reverse().filter((r) => r.count != null).map((r) => ({ value: r.count }))} color="#d59a3f" height={72} />
         </div>
       )}
 
