@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
+import DataCalendar, { ViewToggle } from '@/components/DataCalendar';
 
 const TYPES = [
   { key: 'period_start', label: 'Period start', color: '#e8788a' },
@@ -30,6 +31,7 @@ export default function CyclePage() {
   const [flow, setFlow] = useState('medium');
   const [symptoms, setSymptoms] = useState<string[]>([]);
   const [notes, setNotes] = useState('');
+  const [view, setView] = useState('list');
 
   async function load() {
     if (!userId) return;
@@ -111,8 +113,12 @@ export default function CyclePage() {
         {err && <div style={{ color: '#e8788a', fontSize: 13, marginTop: 10 }}>{err}</div>}
       </div>
 
-      <div style={{ fontSize: 15, fontWeight: 650, color: '#1a1625', marginTop: 26 }}>History</div>
-      {loading ? (<div style={{ color: '#a59fae', fontSize: 14, marginTop: 16 }}>Loading…</div>)
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 26 }}>
+        <div style={{ fontSize: 15, fontWeight: 650, color: '#1a1625' }}>History</div>
+        <ViewToggle view={view} setView={setView} />
+      </div>
+      {view === 'calendar' ? (<DataCalendar rows={events} dateField="log_date" color="#e8788a" label="Cycle" renderDay={(rs) => rs.map((e, i) => <div key={i} style={{ fontSize: 13, color: '#4a4453' }}>{(TYPE_MAP[e.type] || {}).label || e.type}{e.flow ? ` · ${e.flow}` : ''}{e.symptoms?.length ? ` — ${e.symptoms.join(', ')}` : ''}{e.notes ? ` — ${e.notes}` : ''}</div>)} />)
+      : loading ? (<div style={{ color: '#a59fae', fontSize: 14, marginTop: 16 }}>Loading…</div>)
       : events.length === 0 ? (<div className="card" style={{ padding: 24, marginTop: 12, textAlign: 'center', color: '#a59fae', fontSize: 14 }}>Nothing logged yet.</div>)
       : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 14 }}>
