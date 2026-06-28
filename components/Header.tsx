@@ -11,7 +11,7 @@ const NAV = [
   { href: '/interventions', label: 'Interventions', ready: true },
   { href: '/routines', label: 'Routines', ready: true },
   { href: '/cycle', label: 'Cycle', ready: true },
-  { href: '/blood', label: 'Blood Panels', ready: false },
+  { href: '/blood', label: 'Blood Panels', ready: true },
   { href: '/photos', label: 'Photos', ready: false },
   { href: '/nutrition', label: 'Nutrition', ready: false },
   { href: '/biometrics', label: 'Biometrics', ready: false },
