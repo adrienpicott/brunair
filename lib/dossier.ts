@@ -37,7 +37,7 @@ export async function buildDossier(userId: string): Promise<string> {
   }
 
   const L: string[] = [];
-  L.push('# Brunair — Hair Lab Dossier');
+  L.push('# BrunHair — Hair Lab Dossier');
   L.push(`_Generated ${new Date().toLocaleString('en-GB')}_`);
   L.push('\n> Self-reported personal hair-tracking data, compiled for analysis. This is tracking data, not a medical record. Reference ranges are copied from the subject\'s own lab reports.');
 
