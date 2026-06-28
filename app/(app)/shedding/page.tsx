@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
+import DataCalendar, { ViewToggle } from '@/components/DataCalendar';
 
 const METHODS = [
   { key: '60s_count', label: '60-second count' },
@@ -26,6 +27,7 @@ export default function SheddingPage() {
   const [method, setMethod] = useState('60s_count');
   const [count, setCount] = useState('');
   const [notes, setNotes] = useState('');
+  const [view, setView] = useState('list');
 
   async function load() {
     if (!userId) return;
@@ -81,8 +83,12 @@ export default function SheddingPage() {
         {err && <div style={{ color: '#e8788a', fontSize: 13, marginTop: 10 }}>{err}</div>}
       </div>
 
-      <div style={{ fontSize: 15, fontWeight: 650, color: '#1a1625', marginTop: 26 }}>History</div>
-      {loading ? (<div style={{ color: '#a59fae', fontSize: 14, marginTop: 16 }}>Loading…</div>)
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 26 }}>
+        <div style={{ fontSize: 15, fontWeight: 650, color: '#1a1625' }}>History</div>
+        <ViewToggle view={view} setView={setView} />
+      </div>
+      {view === 'calendar' ? (<DataCalendar rows={rows} dateField="log_date" color="#d59a3f" label="Shedding" renderDay={(rs) => rs.map((r, i) => <div key={i} style={{ fontSize: 13, color: '#4a4453' }}><b>{r.count}</b> · {r.method}{r.notes ? ` — ${r.notes}` : ''}</div>)} />)
+      : loading ? (<div style={{ color: '#a59fae', fontSize: 14, marginTop: 16 }}>Loading…</div>)
       : rows.length === 0 ? (<div className="card" style={{ padding: 24, marginTop: 12, textAlign: 'center', color: '#a59fae', fontSize: 14 }}>No counts logged yet.</div>)
       : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 14 }}>
